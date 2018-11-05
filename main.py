@@ -9,6 +9,7 @@
 import sys
 import scheduling
 
+
 # Lê o arquivo passado na chamada do programa
 def read_file():
     lista_bcp = []                      # Lista que guarda todos os BCPs
@@ -32,7 +33,9 @@ def read_file():
             'cheg_bloqueado': 0,                # (Usado apenas quando há evento de I/O) Clock da hora de chegada no bloqueio
             'tempo_bloqueado': 0,               # (Usado apenas quando há evento de I/O) Tempo que o processo deve gastar no I/O
             'tempo_espera': list(map(int, [bcp[3]])),           # Lista dos tempos de espera do processo
-            'quantum': 0                        # (Usado apenas em alguns tipos de escalonadores) Tempo máximo que o processo pode usar a CPU
+            'quantum': 0,                       # (Usado apenas em alguns tipos de escalonadores) Tempo máximo que o processo pode usar a CPU
+            'tempo_resposta': 0,                # Tempo de resposta
+            'executou': 0                       # Marca se o processo já entrou na CPU. 0 -> ainda não entrou / 1 -> já entrou
         })
 
     return lista_bcp                    # Retorna lista de BCPs montada
