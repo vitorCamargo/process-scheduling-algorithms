@@ -44,7 +44,6 @@ def verifica_bloqueados(fila_pronto, fila_bloqueado, clock, ordenacao):
 # Retorno: não há retorno 
 def bloqueia_processo(fila_bloqueado, tempo_chegada, tempo_bloqueado, processo):
     fila_bloqueado.append(processo)                                 # Processo é adicionado na fila de bloqueados
-    #print('id: ', processo['id'], 'tempo: ', tempo_bloqueado)
     processo['cheg_bloqueado'] = tempo_chegada                      # Processo recebe tempo em que entrou na fila de bloqueados
     processo['tempo_bloqueado'] = tempo_bloqueado                   # Processo recebe tempo em que deve ficar bloqueado
     processo['estado'] = 'bloqueado'                                # Processo muda para o estado de bloqueado
@@ -67,17 +66,75 @@ def conta_fila(fila, estatisticas):
 # Retorno: não há retorno
 def calc_estatisticas(lista_bcp, tempoi, tempof, estatisticas):
 
-    throughput = len(lista_bcp) / (tempof - tempoi)                 # Cálculo do throughtput do sistema
-
+    tempo_medio_resposta = 0
+    throughput = 0
     tam_medio_fila_pronto = 0
-    for tam in estatisticas['qtd_fila_pronto']:                     # Soma os tamanhos da fila de processos coletados durante a execução
-        tam_medio_fila_pronto += tam
-    tam_medio_fila_pronto /= len(estatisticas['qtd_fila_pronto'])   # Cálculo do tamanho médio da fila de processos
-
     tempo_medio_espera = 0
+    quant_prontos = len(estatisticas['qtd_fila_pronto'])
     cont = 0
+    
+    if(tempof - tempoi != 0):
+        throughput = float(len(lista_bcp)) / (tempof - tempoi)      # Cálculo do throughtput do sistema
+
+    for tam in estatisticas['qtd_fila_pronto']:                     
+        tam_medio_fila_pronto += tam                                # Soma os tamanhos da fila de processos coletados durante a execução
+    
+    if(quant_prontos != 0):
+        tam_medio_fila_pronto /= quant_prontos                      # Cálculo do tamanho médio da fila de processos
+    else:
+        tam_medio_fila_pronto = 0
+
     for bcp in lista_bcp:                                           # Percorre todos os processos que executaram
         for tempo in bcp['tempo_espera']:                           # Percorre todos os tempo de espera do processo
             tempo_medio_espera += tempo                             # Soma tempo de espera
             cont += 1                                               # Conta número de esperas
     tempo_medio_espera /= cont                                      # Cálculo do tempo médio esperado pelos processos
+    
+ 
+    print("Throughput: " + str(round(throughput,2)) + " ms.")                
+    print("Tempo Médio de Espera (TME): " + str(round(tempo_medio_espera, 2)))
+    print("Tamanho Médio da Fila de Pronto: " + str(tam_medio_fila_pronto))
+    
+    
+    for bcp in lista_bcp:
+        tempo_medio_resposta += bcp['tempo_resposta']
+        print("Tempo de Resposta P" + bcp['id'] + ": " + str(bcp['tempo_resposta']))
+
+    if (len(lista_bcp) > 0):
+        tempo_medio_resposta /= len(lista_bcp)
+        print("Tempo Médio de Resposta: " + str(round(tempo_medio_resposta,2)))    
+    print("________________________________\n")
+
+
+# Adiciona os estados dos processos no histórico de estados
+# Parâmetro: Lista de BCPs
+# Retorno: Não há retorno
+def adiciona_historico (lista_bcp):
+    for bcp in lista_bcp:
+        if (bcp['estado'] == 'pronto'):
+            bcp['historico'] += "☑ "
+        elif (bcp['estado'] == 'bloqueado'):
+            bcp['historico'] += "☒ "
+        elif (bcp['estado'] == 'executando'):
+            bcp['historico'] += "ϵ "
+        else:
+            bcp['historico'] += "☐ "
+
+# Imprime o histórico (linha do tempo dos processos)
+# Parâmetro: Lista de BCPs
+# Retorno: Não há retorno
+def imprime_historico(lista_bcp):
+    for bcp in lista_bcp:
+        print("P" + bcp['id'] + ": " + bcp['historico'])
+    print("\n")
+
+
+# Imprime a legenda da linha do tempo
+# Parâmetro: Não há parâmetros
+# Retorno: Não há retorno
+def imprime_legenda():
+    print("=== Legenda: ===")
+    print("☑ - Pronto")
+    print("☒ - Bloqueado em I/O")
+    print("ϵ - Executando")
+    print("☐ - Outro (No disco ou Terminado)\n")

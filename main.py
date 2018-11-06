@@ -35,7 +35,8 @@ def read_file():
             'tempo_espera': list(map(int, [bcp[3]])),           # Lista dos tempos de espera do processo
             'quantum': 0,                       # (Usado apenas em alguns tipos de escalonadores) Tempo máximo que o processo pode usar a CPU
             'tempo_resposta': 0,                # Tempo de resposta
-            'executou': 0                       # Marca se o processo já entrou na CPU. 0 -> ainda não entrou / 1 -> já entrou
+            'executou': 0,                      # Marca se o processo já entrou na CPU. 0 -> ainda não entrou / 1 -> já entrou
+            'historico': ""
         })
 
     return lista_bcp                    # Retorna lista de BCPs montada
