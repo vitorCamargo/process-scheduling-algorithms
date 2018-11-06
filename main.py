@@ -5,6 +5,8 @@
  O primeiro argumento da chamada é o arquivo que contém os dados dos processos a serem executados
  O segundo argumento é o Quantum que será utilizado na simulação.
 
+ Este arquivo contém a função read_file, que faz a leitura do arquivo passado por parâmetro e guarda as informações na lista de BCPs.
+ Outra função presente neste é a main, que chama a função scheduler, a qual tratará a simulação do sistema com os três escalonadores.
 """
 import sys
 import scheduling

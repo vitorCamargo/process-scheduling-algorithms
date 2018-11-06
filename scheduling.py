@@ -1,5 +1,20 @@
 """
 Neste arquivo são desenvolvidos os três escalonadores: Shortest Job First (SJF), Prioridade (PRIO) e RoundRobin (RR).
+
+A função scheduler é responsável por chamar os escalonadores para tratar a execução dos processos passados pelo usuário.
+Ela faz uma cópia da lista de BCPs e cria a estrutura para armazenar os dados de estatísticas para cada escalonador.
+Após a execução dos três escalonadores, ela chama a função para o cálculo das estatísticas.
+
+Os escalonadores foram implementados de forma recursiva, devendo ser passado para cada chamada a lista de BCPs, as filas de prontos e bloqueados, o número do clock em que aquela chamada deve ser executada, o BCP do processo que está na CPU no momento da chamada e os dados para estatísticas.
+Em cada escalonador é feito:
+    * Captura dos dados da fila de prontos para estatísticas;
+    * Verificação do término da execução do escalonador;
+    * Inicialização dos processos que estão no disco (traz processo para a RAM e os escalona);
+    * Escalonamento de um processo pronto para a execução (leva em conta as regras de cada escalonador);
+    * Verificação se o processo que está executando necessita de I/O. Se sim, direciona ele para a operação;
+    * Verificação se o processo que está executando já terminou todas as suas operações;
+    * Verificação se processos que estavam fazendo I/O já terminaram a operação. Se sim, torna-os prontos;
+    * Chamada do escalonador novamente, com o próximo clock.
 """
 import utilitarios
 import operator
