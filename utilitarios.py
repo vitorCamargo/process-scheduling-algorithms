@@ -1,5 +1,11 @@
 """
  Este arquivo contém todas as funções auxiliares utilizadas pelos escalonadores.
+
+ A função verifica_fim retorna se todos os processos já terminaram de executar ou não.
+ A função verifica_bloqueados escalona os processos que já terminaram I/O para a fila de prontos.
+ A função bloqueia_processo escalona o processo de pronto para bloqueado para I/O.
+ A função conta_fila produz dados sobre o tamanho da fila de prontos para cálculo das estatísticas.
+ A função calc_estatisticas  calcula as estatísticas sobre o sistema: tempo total de espera, tempo médio de espera, throughput, tamanho máximo e médio das filas de processos (prontos) e tempo de resposta.
 """
 import operator
 
