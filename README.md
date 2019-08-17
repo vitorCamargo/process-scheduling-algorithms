@@ -24,3 +24,5 @@ $ npm run dev
 ```
 
 after these steps, the application will be avaliable in [http://localhost:8080/](http://localhost:8080/).
+
+Or if you just want to see this application without downloading it, you can check it on https://vitorcamargo.github.io/process-scheduling-algorithms/
