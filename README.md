@@ -1,5 +1,5 @@
 # Process Scheduling Algorithms
-👨🏽‍💻📝 Assignment for 'Operational Systems' subject about Process Scheduling Algorithms.
+👨🏽‍💻📝 Assignment for 'Operating Systems' subject about Process Scheduling Algorithms.
 
 ## More Informations
 This project was developed by [Lucas Vinicius](https://github.com/lucasvribeiro), [Thais Zorawski](https://github.com/TZorawski) and [Vitor Camargo](https://github.com/vitorCamargo).
