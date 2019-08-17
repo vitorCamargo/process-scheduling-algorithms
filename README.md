@@ -6,7 +6,7 @@ This project was developed by [Lucas Vinicius](https://github.com/lucasvribeiro)
 
 The project is divided into 2 parts, a python3 code and a web application (developed in Vue). The code base for this project has been commented and explained for each algorithm and is in the python file, but for a better understanding, a software has been created that simulates real time process scheduling algorithms through a web application.
 
-## Python Application Usage
+### Python Application Usage
 To execute the python program, you just need to type the following command:
 ```sh
 $ cd /python
@@ -15,7 +15,7 @@ $ python main.py './processos.txt' 3
 
 where, the first parameter is the input file, that contains the processes. The second parameter refers to *quantum* value.
 
-## Web Application Usage
+### Web Application Usage
 To execute the web application is necessary to follow the next steps:
 ```sh
 $ cd ./web
