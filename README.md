@@ -1,24 +1,26 @@
-# Process-Scheduling-Algorithms (Algoritmos de Escalonamento de Processo)
-Este projeto foi desenvolvido por: Lucas Vinicius, Thais Zorawski e Vitor Bueno para a matéria de Sistemas Operacionais.
+# Process Scheduling Algorithms
+👨🏽‍💻📝 Assignment for 'Operational Systems' subject about Process Scheduling Algorithms.
 
-O projeto está dividido em 2 partes, um código em python e um software web (desenvolvido em Vue). O código base para este trabalho, comentado e exeplicado cada função está no arquivo em python, porém, para um entendimento maior, foi criado um software que simula em tempo real os processos (aplicativo Web).
+## More Informations
+This project was developed by [Lucas Vinicius](https://github.com/lucasvribeiro), [Thais Zorawski](https://github.com/TZorawski) and [Vitor Camargo](https://github.com/vitorCamargo).
 
-## Execução dos programas
+The project is divided into 2 parts, a python3 code and a web application (developed in Vue). The code base for this project has been commented and explained for each algorithm and is in the python file, but for a better understanding, a software has been created that simulates real time process scheduling algorithms through a web application.
 
-Para executar o programa em python deve digitar o seguinte:
+## Python Application Usage
+To execute the python program, you just need to type the following command:
+```sh
+$ cd /python
+$ python main.py './processos.txt' 3
+```
 
-`$ cd /python`
+where, the first parameter is the input file, that contains the processes. The second parameter refers to *quantum* value.
 
-`$ python main.py './processos.txt' 3`
+## Web Application Usage
+To execute the web application is necessary to follow the next steps:
+```sh
+$ cd ./web
+$ npm install
+$ npm run dev
+```
 
-onde o primeiro parâmetro é o arquivo contendo os processos e o segundo é referente ao tamanho do quantum.
-
-Para executar o aplicativo web é necessário os seguintes passos:
-
-`$ cd ./web`
-
-`$ npm install`
-
-`$ npm run dev`
-
-após o carregamento, a página estará disponível em [http://localhost:8080/](http://localhost:8080/).
+after these steps, the application will be avaliable in [http://localhost:8080/](http://localhost:8080/).
